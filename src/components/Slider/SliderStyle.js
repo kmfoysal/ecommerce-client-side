@@ -78,8 +78,8 @@ export const Desc = styled.p`
 export const Button = styled.button`
     background: linear-gradient(180deg, #ff589b -0.01%, #ff136f 99.99%);
     border: none;
-    border-radius: 5px;
-    padding: 12px 20px;
+    border-radius: 3px;
+    padding: 14px 30px;
     color: #fff;
     font-weight: 500;
     font-size: 16px;
