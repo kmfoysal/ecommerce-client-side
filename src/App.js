@@ -1,10 +1,10 @@
 import './App.css';
-import Login from './pages/Login/Login';
+import CheckOut from './pages/CheckOut/CheckOut';
 
 function App() {
   return (
     <div className="">
-       <Login></Login>
+       <CheckOut></CheckOut>
     </div>
   );
 }
