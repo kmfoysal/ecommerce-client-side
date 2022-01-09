@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Container, Form, Input, Link, Title, Wrapper } from './LoginStyle';
+import { Link } from 'react-router-dom';
+import { Button, Container, Form, Input, Title, Wrapper } from './LoginStyle';
 
 const Login = () => {
     return (
@@ -11,8 +12,8 @@ const Login = () => {
                         <Input placeholder="username" />
                         <Input placeholder="password" />
                         <Button>LOGIN</Button>
-                        <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
-                        <Link>CREATE A NEW ACCOUNT</Link>
+                        <Link style={{marginBottom: '10px'}}>DO NOT YOU REMEMBER THE PASSWORD?</Link>
+                        <Link to='/registration'>CREATE A NEW ACCOUNT</Link>
                     </Form>
                 </Wrapper>
             </Container>

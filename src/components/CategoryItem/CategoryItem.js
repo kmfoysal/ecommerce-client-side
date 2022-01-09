@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Button, Container, Img, Info, Title } from './CategoryItemStyle';
 
 const CategoryItem = ({category}) => {
@@ -10,7 +11,9 @@ const CategoryItem = ({category}) => {
                     <Title>
                         {category.title}
                     </Title>
-                    <Button>SHOP NOW</Button>
+                    <Link to={`/products/${category.cat}`}>
+                        <Button>SHOP NOW</Button>
+                    </Link>
                 </Info>
             </Container>
         </div>

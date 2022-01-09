@@ -31,6 +31,7 @@ export const Title = styled.h1`
 export const Form = styled.form`
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 10px;
 `;
 
 export const Input = styled.input`

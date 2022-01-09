@@ -46,7 +46,7 @@ export const Button = styled.button`
   background-color: teal;
   color: white;
   cursor: pointer;
-  margin-bottom: 10px;
+  margin: 10px 0;
 `;
 
 export const Link = styled.a`

@@ -10,7 +10,7 @@ const Header = () => {
                 <Left>
                     <Language>EN</Language>
                     <SearchContainer>
-                        <Input></Input>
+                        <Input placeholder='Search'></Input>
                         <SearchOutlined></SearchOutlined>
                     </SearchContainer>
                 </Left>

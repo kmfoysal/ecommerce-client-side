@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Agreement, Button, Container, Form, Input, Title, Wrapper } from './RegistrationStyle';
 
 const Registration = () => {
@@ -20,6 +21,7 @@ const Registration = () => {
                         </Agreement>
                         <Button>CREATE</Button>
                     </Form>
+                    <Link to='/login'>ALREADY HAVE ACCOUNT ?</Link>
                 </Wrapper>
             </Container>
         </div>

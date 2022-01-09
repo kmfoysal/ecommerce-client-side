@@ -27,16 +27,21 @@ export const sliderItems = [
       id: 1,
       img: "https://images.pexels.com/photos/2531121/pexels-photo-2531121.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
       title: "TRANDY CLOTHING",
+      cat: "clothing",
+
     },
     {
       id: 2,
       img: "https://images.pexels.com/photos/3568520/pexels-photo-3568520.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
       title: "HANDY GADGETS",
+      cat: "gadgets",
+
     },
     {
       id: 3,
       img: "https://images.pexels.com/photos/1040384/pexels-photo-1040384.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
       title: "STYLISH FOOTWARE",
+      cat: "footware",
     },
   ];
 
