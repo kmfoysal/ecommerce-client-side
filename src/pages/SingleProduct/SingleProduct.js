@@ -1,10 +1,12 @@
 import { Add, Remove } from '@mui/icons-material';
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import Newsletter from '../../components/Newsletter/Newsletter';
 import TopBar from '../../components/TopBar/TopBar';
+import { addProduct } from '../../redux/cartRedux';
 import { publicRequest } from '../../requestMethod';
 import { AddContainer, Amount, AmountContainer, Button, Desc, Filter, FilterColor, FilterContainer, FilterSize, FilterSizeOption, FilterTitle, Image, ImgContainer, InfoContainer, Price, Title, Wrapper } from './SingleProductStyle';
 
@@ -13,6 +15,9 @@ const SingleProduct = () => {
     const productId = location.pathname.split('/')[2];
     const [product, setProduct] = useState({});
     const [quantity, setQuantity] = useState(1);
+    const [color, setColor] = useState("");
+    const [size, setSize] = useState("");
+    const dispatch = useDispatch();
 
 
   useEffect(() => {
@@ -32,7 +37,13 @@ const SingleProduct = () => {
       } else {
         setQuantity(quantity + 1);
       }
-  }
+  };
+
+  const handleClick = () => {
+    dispatch(
+      addProduct({ ...product, quantity, color, size })
+    );
+  };
 
     return (
         <div>
@@ -52,13 +63,13 @@ const SingleProduct = () => {
                     <Filter>
                         <FilterTitle>Color</FilterTitle>
                         {product.color?.map((c) =>(
-                            <FilterColor color={c} key={c} />
+                            <FilterColor color={c} key={c} onClick={() => setColor(c)} />
                         ))}
                         
                     </Filter>
                     <Filter>
                         <FilterTitle>Size</FilterTitle>
-                        <FilterSize>
+                        <FilterSize onChange={(e) => setSize(e.target.value)}>
                             {product.size?.map((s)=>(
                                 <FilterSizeOption size={s} key={s}>{s}</FilterSizeOption>
                             ))}
@@ -71,7 +82,7 @@ const SingleProduct = () => {
                         <Amount>{quantity}</Amount>
                         <Add onClick = {()=>handleQuantity('inc')} />
                     </AmountContainer>
-                    <Button>ADD TO CART</Button>
+                    <Button onClick={handleClick}>ADD TO CART</Button>
                 </AddContainer>
                 </InfoContainer>
             </Wrapper>
