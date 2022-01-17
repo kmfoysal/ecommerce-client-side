@@ -1,13 +1,39 @@
 import { Add, Remove } from '@mui/icons-material';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import StripeCheckout from 'react-stripe-checkout';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import TopBar from '../../components/TopBar/TopBar';
+import { userRequest } from "../../requestMethod";
 import { Bottom, Button, Container, Details, Hr, Image, Info, PriceDetail, Product, ProductAmount, ProductAmountContainer, ProductColor, ProductDetail, ProductId, ProductName, ProductPrice, ProductSize, Summary, SummaryItem, SummaryItemPrice, SummaryItemText, SummaryTitle, Title, Top, TopButton, TopText, TopTexts, Wrapper } from './CheckOutStyle';
 
+const KEY = process.env.REACT_APP_STRIPE_KEY;
+
 const CheckOut = () => {
-    const cart = useSelector(state=>state.cart)
+    const cart = useSelector(state=>state.cart);
+    const [stripeToken, setStripeToken] = useState(null);
+    const history = useHistory();
+
+    const onToken = (token) => {
+        setStripeToken(token);
+    };
+
+    useEffect(() => {
+        const makeRequest = async () => {
+          try {
+            const res = await userRequest.post("/payment", {
+              tokenId: stripeToken.id,
+              amount: 500,
+            });
+            history.push("/success", {
+              stripeData: res.data,
+              products: cart, });
+          } catch {}
+        };
+        stripeToken && makeRequest();
+      }, [stripeToken, cart, history]);
     return (
         <div>
             <Container>
@@ -73,7 +99,18 @@ const CheckOut = () => {
                                 <SummaryItemText>Total</SummaryItemText>
                                 <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
                             </SummaryItem>
-                            <Button>CHECKOUT NOW</Button>
+                            <StripeCheckout
+                                name="E-STORE"
+                                image="https://avatars.githubusercontent.com/u/62801232?s=96&v=4"
+                                billingAddress
+                                shippingAddress
+                                description={`Your total is $${cart.total}`}
+                                amount={cart.total * 100}
+                                token={onToken}
+                                stripeKey={KEY}
+                                >
+                                <Button>CHECKOUT NOW</Button>
+                            </StripeCheckout>
                         </Summary>
                     </Bottom>
                 </Wrapper>

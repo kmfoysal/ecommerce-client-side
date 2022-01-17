@@ -57,10 +57,10 @@ const FeaturedProducts = ({cat, filters, sort}) => {
             <Container>
                 <Wrapper>
                     { cat
-                        ? filteredProducts.map(product => <Product product={product} key={product.id}>
+                        ? filteredProducts.map(product => <Product product={product} key={product._id}>
 
                                                          </Product>)
-                        : products.slice(0,8).map(product => <Product product={product} key={product.id}>
+                        : products.slice(0,8).map(product => <Product product={product} key={product._id}>
 
                             </Product>)
                     }
