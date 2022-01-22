@@ -1,6 +1,5 @@
-import {
-  BrowserRouter as Router, Route, Switch
-} from "react-router-dom";
+import { useSelector } from "react-redux";
+import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
 import CheckOut from "./pages/CheckOut/CheckOut";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
@@ -10,6 +9,7 @@ import SingleProduct from "./pages/SingleProduct/SingleProduct";
 import Success from "./pages/Success/Success";
 
 function App() {
+  const user = useSelector((state) => state.user.currentUser);
   return (
     <Router>
       <Switch>
@@ -35,10 +35,10 @@ function App() {
           <Success></Success>
         </Route>
         <Route path='/login'>
-          <Login></Login>
+          {user ? <Redirect to='/' /> : <Login></Login>}
         </Route>
         <Route path='/registration'>
-          <Registration></Registration>
+          {user ? <Redirect to='/' /> : <Registration></Registration>}
         </Route>
       </Switch>
     </Router>
