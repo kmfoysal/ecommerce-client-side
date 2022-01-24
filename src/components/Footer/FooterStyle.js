@@ -1,20 +1,21 @@
 import styled from "styled-components";
+import { mobile } from "../../responsiveStyle";
 
 export const Container = styled.div`
 padding: 50px;
 background-color: #E9E8E6;
 display: flex;
-
+${mobile({ flexDirection:'column'})}
 `;
 
 export const Title = styled.h3`
   text-transform: uppercase;
   margin-bottom: 30px;
+  ${mobile({ marginTop:'20px'})}
 `;
 
 export const Left = styled.div`
 flex: 1;
-
 `;
 
 export const Logo = styled.h1`

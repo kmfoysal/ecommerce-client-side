@@ -10,6 +10,7 @@ import Success from "./pages/Success/Success";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
+
   return (
     <Router>
       <Switch>

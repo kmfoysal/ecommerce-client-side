@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mobile } from "../../responsiveStyle";
 
 export const Container = styled.div`
   /* height: 50vh; */
@@ -12,11 +13,14 @@ export const Container = styled.div`
 export const Title = styled.h2`
   font-size: 60px;
   margin-bottom: 30px;
+  ${mobile({ fontSize:'32px' })}
+
 `;
 
 export const Desc = styled.p`
   font-size: 24px;
   margin-bottom: 30px;
+  text-align: center;
 
 `;
 
@@ -27,6 +31,8 @@ export const InputContainer = styled.div`
   display: flex;
   justify-content: space-between;
   border: 1px solid lightgray;
+  ${mobile({ width:'80%' })}
+
 `;
 
 export const Input = styled.input`
@@ -40,4 +46,6 @@ export const Button = styled.button`
   border: none;
   background-color: teal;
   color: white;
+  ${mobile({ flex:'2' })}
+
 `;

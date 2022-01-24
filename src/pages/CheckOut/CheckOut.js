@@ -1,11 +1,12 @@
 import { Add, Remove } from '@mui/icons-material';
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
 import StripeCheckout from 'react-stripe-checkout';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import TopBar from '../../components/TopBar/TopBar';
+import { clearCart } from '../../redux/cartRedux';
 import { userRequest } from "../../requestMethod";
 import { Bottom, Button, Container, Details, Hr, Image, Info, PriceDetail, Product, ProductAmount, ProductAmountContainer, ProductColor, ProductDetail, ProductId, ProductName, ProductPrice, ProductSize, Summary, SummaryItem, SummaryItemPrice, SummaryItemText, SummaryTitle, Title, Top, TopButton, TopText, TopTexts, Wrapper } from './CheckOutStyle';
 
@@ -13,8 +14,25 @@ const KEY = process.env.REACT_APP_STRIPE_KEY;
 
 const CheckOut = () => {
     const cart = useSelector(state=>state.cart);
+    const cartQuantity = useSelector(state=>state.cart.quantity);
     const [stripeToken, setStripeToken] = useState(null);
     const history = useHistory();
+    const dispatch = useDispatch()
+
+    const [quantity, setQuantity] = useState(1);
+
+    const handleClick = () => {
+        dispatch(clearCart());
+      };
+
+    const handleQuantity = (type)=>{
+        if (type === "dec") {
+            quantity > 1 && setQuantity(quantity - 1);
+          } else {
+            setQuantity(quantity + 1);
+          }
+      };
+
 
     const onToken = (token) => {
         setStripeToken(token);
@@ -42,12 +60,14 @@ const CheckOut = () => {
                 <Wrapper>
                     <Title>YOUR BAG</Title>
                     <Top>
-                        <TopButton>CONTINUE SHOPPING</TopButton>
+                        <Link to='/'>
+                            <TopButton>CONTINUE SHOPPING</TopButton>
+                        </Link>
                         <TopTexts>
-                            <TopText>Shopping Bag(2)</TopText>
+                            <TopText>Shopping Bag({cartQuantity})</TopText>
                             <TopText>Your Wishlist (0)</TopText>
                         </TopTexts>
-                        <TopButton type="filled">CHECKOUT NOW</TopButton>
+                        <TopButton type="filled" onClick={handleClick}>CLEAR CART</TopButton>
                     </Top>
                     <Bottom>
                         <Info>
@@ -70,9 +90,9 @@ const CheckOut = () => {
                                 </ProductDetail>
                                 <PriceDetail>
                                     <ProductAmountContainer>
-                                    <Add />
+                                    <Remove onClick = {()=>handleQuantity('dec')} />
                                     <ProductAmount>{product.quantity}</ProductAmount>
-                                    <Remove />
+                                    <Add onClick = {()=>handleQuantity('inc')} />
                                     </ProductAmountContainer>
                                     <ProductPrice>$ {product.price * product.quantity}</ProductPrice>
                                 </PriceDetail>

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mobile } from "../../responsiveStyle";
 
 
 export const Container = styled.div`
@@ -21,6 +22,8 @@ export const Top = styled.div`
   justify-content: space-between;
   padding: 20px;
   margin-bottom: 30px;
+  ${mobile({ flexDirection:'column' })}
+
 `;
 
 export const TopButton = styled.button`
@@ -34,6 +37,7 @@ export const TopButton = styled.button`
 `;
 
 export const TopTexts = styled.div`
+  ${mobile({ padding: '20px 0' })}
 `;
 
 export const TopText = styled.span`
@@ -45,7 +49,7 @@ export const TopText = styled.span`
 export const Bottom = styled.div`
   display: flex;
   justify-content: space-between;
-
+  ${mobile({ flexDirection:'column' })}
 `;
 
 export const Info = styled.div`
@@ -60,6 +64,7 @@ export const Product = styled.div`
 export const ProductDetail = styled.div`
   flex: 2;
   display: flex;
+  ${mobile({ flexDirection:'column' })}
 `;
 
 export const Image = styled.img`
@@ -92,6 +97,7 @@ export const PriceDetail = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
 `;
 
 export const ProductAmountContainer = styled.div`
@@ -134,6 +140,7 @@ export const SummaryItem = styled.div`
   justify-content: space-between;
   font-weight: ${(props) => props.type === "total" && "500"};
   font-size: ${(props) => props.type === "total" && "24px"};
+
 `;
 
 export const SummaryItemText = styled.span``;

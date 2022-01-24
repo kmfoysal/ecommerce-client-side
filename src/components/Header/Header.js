@@ -1,13 +1,21 @@
 import { SearchOutlined, ShoppingCartOutlined } from '@mui/icons-material';
 import { Badge } from '@mui/material';
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
+import { logout } from '../../redux/userRedux';
 import { Center, Container, Input, Language, Left, Logo, MenuItem, Right, SearchContainer, Wrapper } from './HeaderStyles';
 
 const Header = () => {
     const quantity = useSelector(state=>state.cart.quantity);
-    console.log(quantity);
+    const dispatch = useDispatch();
+    const history = useHistory();
+
+
+    const handleClick = () => {
+        dispatch(logout());
+        history.push('/login')
+      };
     return (
         <Container>
             <Wrapper>
@@ -24,6 +32,7 @@ const Header = () => {
                 <Right>
                     <MenuItem>REGISTER</MenuItem>
                     <MenuItem>SIGN IN</MenuItem>
+                    <MenuItem onClick={handleClick}>SIGN OUT</MenuItem>
                     <Link to='/cart'>
                         <MenuItem>
                             <Badge badgeContent={quantity} color="secondary">

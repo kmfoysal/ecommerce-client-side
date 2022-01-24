@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mobile } from "../../responsiveStyle";
 
 export const Container = styled.div`
 
@@ -13,6 +14,7 @@ export const Wrapper = styled.div`
    padding: 10px 20px;
    display: flex;
    justify-content: space-between;
+   ${mobile({ flexDirection:'column' })}
 `;
 
 export const Left = styled.div`
@@ -24,6 +26,7 @@ export const Left = styled.div`
 export const Language = styled.span`
    font-size: 14px;
    cursor: pointer;
+   ${mobile({ display:'none' })}
 `;
 
 export const SearchContainer = styled.div`
@@ -34,6 +37,7 @@ export const SearchContainer = styled.div`
    border-right: none;
    border-left: none;
    border-bottom: 1px solid;
+   ${mobile({ display:'none' })}
 `;
 
 export const Input = styled.input`
@@ -51,6 +55,7 @@ export const Center = styled.div`
 export const Logo = styled.h1`
   font-weight: bold;
   font-size: 32px;
+  ${mobile({ fontSize:'24px' })}
 `;
 
 export const Right = styled.div`
@@ -58,6 +63,7 @@ export const Right = styled.div`
   display: flex;
   justify-content: end;
   align-items: center;
+  ${mobile({ justifyContent: 'center'})}
 `;
 
 export const MenuItem = styled.div`
