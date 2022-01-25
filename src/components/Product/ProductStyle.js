@@ -18,7 +18,8 @@ export const Info = styled.div`
 
 export const Container = styled.div`
   padding: 20px;
-  background-color: #fcf1ed;
+  margin-bottom: 10px;
+  background-color: gainsboro;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,7 +34,7 @@ export const Circle = styled.div`
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background-color: #fff;
+  background-color: orange;
   position: absolute;
 `;
 

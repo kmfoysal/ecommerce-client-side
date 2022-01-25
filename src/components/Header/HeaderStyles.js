@@ -6,7 +6,7 @@ export const Container = styled.div`
     height: 60px;
     display: flex;
     align-items: center;
-    background-color: #ccc;
+    background-color: orange;
 `;
 
 export const Wrapper = styled.div`
@@ -55,6 +55,8 @@ export const Center = styled.div`
 export const Logo = styled.h1`
   font-weight: bold;
   font-size: 32px;
+  font-family: Satisfy;
+  color: black;
   ${mobile({ fontSize:'24px' })}
 `;
 
@@ -69,5 +71,6 @@ export const Right = styled.div`
 export const MenuItem = styled.div`
   font-size:14px;
   margin-left: 25px;
+  color: #202020;
   cursor: pointer;
 `;

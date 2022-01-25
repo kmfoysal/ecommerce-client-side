@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Footer from '../../components/Footer/Footer';
+import Header from '../../components/Header/Header';
 import { login } from '../../redux/apiCalls';
 import { Button, Container, Error, Form, Input, Title, Wrapper } from './LoginStyle';
 
@@ -16,6 +18,7 @@ const Login = () => {
   };
     return (
         <div>
+            <Header></Header>
              <Container>
                 <Wrapper>
                     <Title>SIGN IN</Title>
@@ -29,6 +32,7 @@ const Login = () => {
                     </Form>
                 </Wrapper>
             </Container>
+            <Footer></Footer>
         </div>
     );
 };

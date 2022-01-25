@@ -1,5 +1,6 @@
 import { Facebook, Instagram, MailOutline, Phone, Pinterest, Room, Twitter } from '@mui/icons-material';
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { ContactItem, Container, Desc, Left, List, ListItem, Logo, Payment, Privacy, Right, SocialContainer, SocialIcon, Title, UsefulLinks } from './FooterStyle';
 
 const Footer = () => {
@@ -16,8 +17,12 @@ const Footer = () => {
                 <UsefulLinks>
                     <Title>Useful Links</Title>
                     <List>
-                        <ListItem>Home</ListItem>
-                        <ListItem>Cart</ListItem>
+                        <NavLink to='/' style={{textDecoration:'none'}}>
+                            <ListItem>Home</ListItem>
+                        </NavLink>
+                        <NavLink to='/cart' style={{textDecoration:'none'}}>
+                            <ListItem>Cart</ListItem>
+                        </NavLink>
                         <ListItem>My Account</ListItem>
                         <ListItem>Order Tracking</ListItem>
                     </List>

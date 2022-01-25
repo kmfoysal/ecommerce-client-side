@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mobile } from "../../responsiveStyle";
 
 
 export const Container = styled.div`
@@ -21,6 +22,7 @@ export const Wrapper = styled.div`
   width: 40%;
   padding: 20px;
   background-color: white;
+  ${mobile({ width:'95%' })}
 `;
 
 export const Title = styled.h1`
@@ -37,6 +39,13 @@ export const Form = styled.form`
 export const Input = styled.input`
   flex: 1;
   min-width: 40%;
+  margin: 20px 10px 0px 0px;
+  padding: 10px;
+`;
+
+export const NameInput = styled.input`
+  flex: 1;
+  min-width: 90%;
   margin: 20px 10px 0px 0px;
   padding: 10px;
 `;

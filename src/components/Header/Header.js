@@ -2,12 +2,13 @@ import { SearchOutlined, ShoppingCartOutlined } from '@mui/icons-material';
 import { Badge } from '@mui/material';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, NavLink, useHistory } from 'react-router-dom';
 import { logout } from '../../redux/userRedux';
 import { Center, Container, Input, Language, Left, Logo, MenuItem, Right, SearchContainer, Wrapper } from './HeaderStyles';
 
 const Header = () => {
     const quantity = useSelector(state=>state.cart.quantity);
+    const user = useSelector(state=>state.user.currentUser);
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -27,12 +28,25 @@ const Header = () => {
                     </SearchContainer>
                 </Left>
                 <Center>
-                    <Logo>E-SHOP</Logo>
+                    <NavLink to='/' style={{textDecoration:'none'}}>
+                        <Logo>E-SHOP</Logo>
+                    </NavLink>
                 </Center>
                 <Right>
-                    <MenuItem>REGISTER</MenuItem>
-                    <MenuItem>SIGN IN</MenuItem>
-                    <MenuItem onClick={handleClick}>SIGN OUT</MenuItem>
+                    <NavLink to='/' style={{textDecoration:'none'}}>
+                        <MenuItem>HOME</MenuItem>
+                    </NavLink>
+                    {user ? <MenuItem onClick={handleClick}>SIGN OUT</MenuItem>
+                    :     
+                    <NavLink to='/login' style={{textDecoration:'none'}}>
+                        <MenuItem>SIGN IN</MenuItem>
+                    </NavLink>
+                    }
+                    {/* {
+                    user.isAdmin && <NavLink to='/dashboard' style={{textDecoration:'none'}}>
+                                        <MenuItem>DASHBOARD</MenuItem>
+                                    </NavLink>
+                    } */}
                     <Link to='/cart'>
                         <MenuItem>
                             <Badge badgeContent={quantity} color="secondary">

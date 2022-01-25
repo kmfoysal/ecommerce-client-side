@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@100;200;300;400;500;600;700&display=swap");
 
 * {
@@ -8,6 +9,7 @@
 
 body {
   margin: 0;
+  font-family: "Satisfy", cursive;
   font-family: "Urbanist", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -15,4 +17,5 @@ body {
 
 code {
   font-family: "Urbanist", sans-serif;
+  font-family: "Satisfy", cursive;
 }

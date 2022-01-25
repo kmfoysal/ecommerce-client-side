@@ -3,13 +3,14 @@ import { mobile } from "../../responsiveStyle";
 
 export const Container = styled.div`
 padding: 50px;
-background-color: #E9E8E6;
+background-color: #202020;
 display: flex;
 ${mobile({ flexDirection:'column'})}
 `;
 
 export const Title = styled.h3`
   text-transform: uppercase;
+  color: #fff;
   margin-bottom: 30px;
   ${mobile({ marginTop:'20px'})}
 `;
@@ -19,7 +20,8 @@ flex: 1;
 `;
 
 export const Logo = styled.h1`
-
+ color: #fff;
+ font-family: Satisfy;
 `;
 
 export const Desc = styled.div`
@@ -47,7 +49,7 @@ export const List = styled.ul`
 export const ListItem = styled.li`
 margin-bottom: 15px;
 color: #acacac;
-  
+cursor: pointer;
 `
 
 export const Privacy = styled.div`
