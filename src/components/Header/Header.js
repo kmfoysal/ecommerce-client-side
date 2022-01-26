@@ -9,6 +9,7 @@ import { Center, Container, Input, Language, Left, Logo, MenuItem, Right, Search
 const Header = () => {
     const quantity = useSelector(state=>state.cart.quantity);
     const user = useSelector(state=>state.user.currentUser);
+
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -42,11 +43,11 @@ const Header = () => {
                         <MenuItem>SIGN IN</MenuItem>
                     </NavLink>
                     }
-                    {/* {
-                    user.isAdmin && <NavLink to='/dashboard' style={{textDecoration:'none'}}>
+                    {
+                    user?.isAdmin && <NavLink to='/dashboard' style={{textDecoration:'none'}}>
                                         <MenuItem>DASHBOARD</MenuItem>
                                     </NavLink>
-                    } */}
+                    }
                     <Link to='/cart'>
                         <MenuItem>
                             <Badge badgeContent={quantity} color="secondary">

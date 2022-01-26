@@ -18,7 +18,6 @@ const CheckOut = () => {
     const [stripeToken, setStripeToken] = useState(null);
     const history = useHistory();
     const dispatch = useDispatch()
-
     const [quantity, setQuantity] = useState(1);
 
     const handleClick = () => {
@@ -43,7 +42,7 @@ const CheckOut = () => {
           try {
             const res = await userRequest.post("/payment", {
               tokenId: stripeToken.id,
-              amount: 500,
+              amount: cart.total * 100,
             });
             history.push("/success", {
               stripeData: res.data,
