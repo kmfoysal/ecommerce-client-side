@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
 import CheckOut from "./pages/CheckOut/CheckOut";
+import Dashborad from "./pages/Dashboard/Dashborad";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Registration from "./pages/Registration/Registration";
@@ -34,6 +35,9 @@ function App() {
         </Route>
         <Route path='/success'>
           <Success></Success>
+        </Route>
+        <Route path='/dashboard'>
+          {user?.isAdmin? <Dashborad></Dashborad> : <Redirect to='/login' />}
         </Route>
         <Route path='/login'>
           {user ? <Redirect to='/' /> : <Login></Login>}
