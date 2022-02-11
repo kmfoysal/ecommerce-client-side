@@ -13,8 +13,8 @@ const FeaturedProducts = ({cat, filters, sort}) => {
           try {
             const res = await axios.get(
               cat
-                ? `http://localhost:5000/allproducts?category=${cat}`
-                : "http://localhost:5000/allproducts"
+                ? `https://morning-woodland-44576.herokuapp.com/allproducts?category=${cat}`
+                : "https://morning-woodland-44576.herokuapp.com/allproducts"
             );
             setProducts(res.data);
           } catch (err) {}
